@@ -1,0 +1,20 @@
+select /dev/sda
+rm 1
+rm 2
+rm 3
+rm 4
+rm 5
+print
+mklabel gpt yes
+mkpart primary ext4 513MiB 16GiB
+mkpart primary linux-swap 16GiB 18GiB
+mkpart primary ext4 18GiB 48GiB
+mkpart primary ext4 48GiB 78GiB
+mkpart primary ext4 78GiB 100%
+name 1 recovery
+name 2 swap
+name 3 root_a
+name 4 root_b
+name 5 home
+set 1 boot on
+quit
